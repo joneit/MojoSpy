@@ -1,0 +1,23 @@
+{
+  "name": "simple-spy",
+  "version": "0.1.0",
+  "description": "Simple method spying with call history and mock hook.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joneit/SimpleSpy.git"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "JEiten",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-plumber": "^1.0.1",
+    "jsdoc": "^3.3.2",
+    "should": "^7.1.0"
+  }
+}
