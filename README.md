@@ -1,5 +1,7 @@
-# bool-rle
-Run-length-encoded booleans
+# MojoSpy
+Simple method spying with calling history and mocking.
+
+For docs, point browser to ./doc/index.html after running `gulp` or at least `gulp doc`.
 
 
 ### Re-purposing this build template
