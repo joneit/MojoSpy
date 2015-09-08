@@ -1,6 +1,7 @@
 {
   "name": "mojo-spy",
   "version": "0.1.0",
+  "main": "./src/js/MojoSpy.js",
   "description": "Simple method spying with calling history and mocking.",
   "repository": {
     "type": "git",
