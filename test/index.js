@@ -4,7 +4,7 @@
 
 require('should'); // extends Object with `should`
 
-var Spy = require('../src/js/SimpleSpy.js');
+var Spy = require('../src/js/MojoSpy.js');
 
 describe('require() returns an object that', function() {
     it('is a function that', function() {

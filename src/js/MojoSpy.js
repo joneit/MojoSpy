@@ -1,11 +1,11 @@
 'use strict';
 
 /**
- * @constructor SimpleSpy
+ * @constructor MojoSpy
  * @author Jonathan Eiten
  * @license MIT
  *
- * Instantiating a `SimpleSpy` object lets you spy on a particular method:
+ * Instantiating a `MojoSpy` object lets you spy on a particular method:
  * * Observe how many times the method was called (records the particular parameters for each call)
  * * Call through to the method
  * * Call through to a mock function instead (which can the call through on its own)
@@ -16,7 +16,7 @@
  * @param {object} object - Object containing a method `methodName` to spy on.
  * @param {string} methodName - The name of the method in `object` to spy on.
  */
-function SimpleSpy(object, methodName) {
+function MojoSpy(object, methodName) {
     var method = object[methodName];
 
     if (typeof method !== 'function') {
@@ -42,7 +42,7 @@ function SimpleSpy(object, methodName) {
     this.reset();
 }
 
-SimpleSpy.prototype = {
+MojoSpy.prototype = {
 
     /**
      * @abstract
@@ -61,7 +61,7 @@ SimpleSpy.prototype = {
      *
      * Note that the context in the above (`this` and `arguments`) is the mock function body.
      *
-     * @memberOf SimpleSpy.prototype
+     * @memberOf MojoSpy.prototype
      */
 
     /**
@@ -71,9 +71,9 @@ SimpleSpy.prototype = {
      * @default true
      * @summary Whether or not to record calls to the original method.
      * @desc If truthy, calls to the original method are recorded in `this.callHistory`.
-     * @see {@link SimpleSpy|on} shorthand to turn historical recording **ON**.
-     * @see {@link SimpleSpy|off} shorthand to turn historical recording **OFF**.
-     * @memberOf SimpleSpy.prototype
+     * @see {@link MojoSpy|on} shorthand to turn historical recording **ON**.
+     * @see {@link MojoSpy|off} shorthand to turn historical recording **OFF**.
+     * @memberOf MojoSpy.prototype
      */
 
     /**
@@ -86,7 +86,7 @@ SimpleSpy.prototype = {
      * Note: This method does not disentangle the spy.
      * @param object
      * @param methodName
-     * @memberOf SimpleSpy.prototype
+     * @memberOf MojoSpy.prototype
      */
     reset: function () {
         this.on();
@@ -96,7 +96,7 @@ SimpleSpy.prototype = {
 
     /**
      * @summary Resets the call history to an empty list.
-     * @memberOf SimpleSpy.prototype
+     * @memberOf MojoSpy.prototype
      */
     clear: function () {
         this.callHistory = [];
@@ -104,7 +104,7 @@ SimpleSpy.prototype = {
 
     /**
      * @summary Turns historical recording *ON*.
-     * @memberOf SimpleSpy.prototype
+     * @memberOf MojoSpy.prototype
      */
     on: function () {
         this.isRecording = true;
@@ -112,7 +112,7 @@ SimpleSpy.prototype = {
 
     /**
      * @summary Turns historical recording *OFF*.
-     * @memberOf SimpleSpy.prototype
+     * @memberOf MojoSpy.prototype
      */
     off: function () {
         this.isRecording = false;
@@ -124,7 +124,7 @@ SimpleSpy.prototype = {
      * @desc The spied-upon method is restored to its original state.
      * This method is provided for tear down.
      * The spy object is now a lame duck and may be disposed of.
-     * @memberOf SimpleSpy.prototype
+     * @memberOf MojoSpy.prototype
      */
     retire: function () {
         if (this.object && this.methodName && this.method) { // if spying...
@@ -149,7 +149,7 @@ SimpleSpy.prototype = {
      * Note that there is no way to determine if the spied-upon method was called without any parameters.
      *
      * @param {*} [arg...] - "Exact" (i.e., ===) arguments required to have been supplied to the spied-upon method
-     * @memberOf SimpleSpy.prototype
+     * @memberOf MojoSpy.prototype
      */
     wasCalled: function () {
         if (arguments.length) {
@@ -171,7 +171,7 @@ SimpleSpy.prototype = {
 };
 
 // synonyms:
-SimpleSpy.prototype.close = SimpleSpy.prototype.retire;
+MojoSpy.prototype.close = MojoSpy.prototype.retire;
 
 
-module.exports = SimpleSpy; // Node.js support
+module.exports = MojoSpy; // Node.js support

@@ -1,15 +1,15 @@
 {
-  "name": "simple-spy",
+  "name": "mojo-spy",
   "version": "0.1.0",
-  "description": "Simple method spying with call history and mock hook.",
+  "description": "Simple method spying with calling history and mocking.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/joneit/SimpleSpy.git"
+    "url": "git://github.com/joneit/MojoSpy.git"
   },
   "scripts": {
     "test": "gulp test"
   },
-  "author": "JEiten",
+  "author": "Jonathan Eiten <jonathan.eiten@mojotouch.com> (http://mojotouch.com)",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
