@@ -140,13 +140,13 @@ Therefore, be sure to give the `--recurse-submodules` option to checkout the
 contents of the submodule:
 
 ```shell
-$ git clone --recurse-submodules https://github.com/openfin/sparse-boolean-array.git
+$ git clone --recurse-submodules https://github.com/openfin/repo-name-goes-here.git
 ```
 
 If you forget, you can still do it (soon) after cloning as a separate command:
 
 ```shell
-$ git clone https://github.com/openfin/sparse-boolean-array.git
+$ git clone https://github.com/openfin/repo-name-goes-here.git
 $ git submodule update --init --recursive
 ```
 
