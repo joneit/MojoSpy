@@ -24,16 +24,18 @@ function MojoSpy(object, methodName) {
     }
 
     var self = this;
-    object[methodName] = function () {
+    function spy() {
+        var args = Array.prototype.slice.call(arguments);
         if (self.isRecording) {
-            self.callHistory.push(arguments);
+            self.callHistory.push(args);
         }
         if (self.callThru) {
-            var args = Array.prototype.slice.call(arguments, 0);
             var callThru = typeof self.callThru === 'function' ? self.callThru : method;
             callThru.apply(this, args);
         }
-    };
+    }
+
+    object[methodName] = spy;
 
     this.object = object;
     this.methodName = methodName;
@@ -57,7 +59,7 @@ MojoSpy.prototype = {
      *
      * A mock can call the original method by calling:
      *
-     * `spy.method.apply(this, Array.prototype.slice.call(arguments, 0));`
+     * `spy.method.apply(this, Array.prototype.slice.call(arguments));`
      *
      * Note that the context in the above (`this` and `arguments`) is the mock function body.
      *
@@ -73,6 +75,16 @@ MojoSpy.prototype = {
      * @desc If truthy, calls to the original method are recorded in `this.callHistory`.
      * @see {@link MojoSpy|on} shorthand to turn historical recording **ON**.
      * @see {@link MojoSpy|off} shorthand to turn historical recording **OFF**.
+     * @memberOf MojoSpy.prototype
+     */
+
+    /**
+     * @abstract
+     * @name callHistory
+     * @type {Array.Array}
+     * @default []
+     * @summary List of call arguments as arrays.
+     * @desc These are the `arguments` objects from each call, converted to true `Array` objects.
      * @memberOf MojoSpy.prototype
      */
 
@@ -146,7 +158,7 @@ MojoSpy.prototype = {
      * Hint: If you have the expected parameters in an array, call may with:
      * `yourSpy.wasCalled.apply(yourSpy, yourArray)`.
      *
-     * Note that there is no way to determine if the spied-upon method was called without any parameters.
+     * Note that there is presently no way to determine if the spied-upon method was called without any parameters.
      *
      * @param {*} [arg...] - "Exact" (i.e., ===) arguments required to have been supplied to the spied-upon method
      * @memberOf MojoSpy.prototype

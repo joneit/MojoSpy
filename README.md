@@ -75,8 +75,29 @@ you might write the following test fragment:
 
 ```javascript
     it('sends mail to Mickey', function() {
-        // put some test code here that you expect will invoke the method with the exepcted parameters
+        // put some test code here that you expect will invoke the method with the expected parameters
         spy.wasCalled("Mickey Mouse", "mmouse@disney.com").should.be.true();
+    });
+```
+or, alternatively, you might want to check the parameters of (say) the last call made:
+
+```javascript
+    it('sends mail to Mickey', function() {
+        // test code goes here
+        var arguments = spy.callHistory[spy.callHistory.length - 1];
+        arguments.length.should.equal(2);
+        arguments[0].should.equal("Mickey Mouse");
+        arguments[1].should.equal("mmouse@disney.com");
+    });
+```
+
+or, more simply:
+
+```javascript
+    it('sends mail to Mickey', function() {
+        // test code goes here
+        var arguments = spy.callHistory[spy.callHistory.length - 1];
+        arguments.should.deepEqual([ "Mickey Mouse", "mmouse@disney.com" ]);
     });
 ```
 
@@ -92,7 +113,7 @@ the property to `true`.
 
 Alternatively, you can set the `callThru` property to a _mock._
 A mock function to call in place of the actual method.
-The function you supply will be called orwith the same parameters
+The function you supply will be called or with the same parameters
 that the actual method would have been called with.
 
 If you want to call both a mock function of your own and the actual method,
@@ -100,7 +121,7 @@ you can do so by calling the actual method from your mock function with the
 following statement:
 
 ```javascript
-spy.method.apply(this, Array.prototype.slice.call(arguments, 0));
+spy.method.apply(this, Array.prototype.slice.call(arguments));
 ```
 
 ### Retiring your spy

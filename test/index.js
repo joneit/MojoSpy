@@ -55,8 +55,8 @@ describe('require() returns an object that', function() {
             it('records the calling arguments', function () {
                 obj.method(1,2,3);
                 obj.method(4,5,6);
-                Array.prototype.slice.call(spy.callHistory[0], 0).should.deepEqual([1,2,3]);
-                Array.prototype.slice.call(spy.callHistory[1], 0).should.deepEqual([4,5,6]);
+                spy.callHistory[0].should.deepEqual([1,2,3]);
+                spy.callHistory[1].should.deepEqual([4,5,6]);
             });
         });
         describe('has a member `clear` that', function() {
@@ -142,17 +142,17 @@ describe('require() returns an object that', function() {
                 spy.callThru = function () { calledMock = arguments; };
                 obj.method(1, 2, 3);
                 methodArgs.should.be.false();
-                Array.prototype.slice.call(calledMock, 0).should.deepEqual([1, 2, 3]);
+                Array.prototype.slice.call(calledMock).should.deepEqual([1, 2, 3]);
             });
             it('when set to a function (a "mock") with a call-through of its own, makes calls to that function AND the original method with arguments forwarded to each', function () {
                 var mockArgs = false;
                 spy.callThru = function () {
                     mockArgs = arguments;
-                    spy.method.apply(this, Array.prototype.slice.call(arguments, 0));
+                    spy.method.apply(this, Array.prototype.slice.call(arguments));
                 };
                 obj.method(1, 2, 3);
-                Array.prototype.slice.call(methodArgs, 0).should.deepEqual([1, 2, 3]);
-                Array.prototype.slice.call(mockArgs, 0).should.deepEqual([1, 2, 3]);
+                Array.prototype.slice.call(methodArgs).should.deepEqual([1, 2, 3]);
+                Array.prototype.slice.call(mockArgs).should.deepEqual([1, 2, 3]);
             });
         });
     });
