@@ -1,6 +1,9 @@
 # MojoSpy
 Simple method spying with calling history and mocking.
 
+\[See the note [Regarding submodules](https://github.com/openfin/rectangular#regarding-submodules)
+for important information on cloning or re-purposing this repo.\]
+
 For detailed API docs, point browser to ./doc/index.html after running `gulp` (or at least `gulp doc`). I intend to put the compiled jsdoc file on github pages in the near future.
 
 ### Introduction
@@ -130,6 +133,3 @@ Calling `spy.retire()` removes the spy code from the actual method,
 which is restored to its original state.
 The spy object is now a lame duck and may be disposed of.
 This method is provided for tear down.
-
-\[See [Regarding this build template](https://github.com/openfin/rectangular#regarding-submodules)
-for important information on cloning or re-purposing this repo.\]
