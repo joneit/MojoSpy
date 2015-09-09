@@ -131,7 +131,26 @@ which is restored to its original state.
 The spy object is now a lame duck and may be disposed of.
 This method is provided for tear down.
 
-### A note on re-purposing this build template
+## Regarding this build template
+
+### Cloning
+
+When cloning this repo keep in mind that Openfin's jsdoc template is a submodule.
+Therefore, be sure to give the `--recurse-submodules` option to checkout the
+contents of the submodule:
+
+```shell
+$ git clone --recurse-submodules https://github.com/openfin/sparse-boolean-array.git
+```
+
+If you forget, you can still do it (soon) after cloning as a separate command:
+
+```shell
+$ git clone https://github.com/openfin/sparse-boolean-array.git
+$ git submodule update --init --recursive
+```
+
+### Re-purposing for a new repo
 
 _Openfin developers:_
 If you want to use this build template _for a new repo_
