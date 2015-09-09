@@ -4,20 +4,20 @@ Simple method spying with calling history and mocking.
 \[See the note [Regarding submodules](https://github.com/openfin/rectangular#regarding-submodules)
 for important information on cloning or re-purposing this repo.\]
 
-For detailed API docs, point browser to ./doc/index.html after running `gulp` (or at least `gulp doc`). I intend to put the compiled jsdoc file on github pages in the near future.
+### API documentation
+
+Detailed API docs can be found [here](http://joneit.github.io/MojoSpy/MojoSpy.html).
 
 ### Introduction
 "Spying" is used in testing to determine if a public API method is called when it is supposed to be.
 
-Note that the function you are spying on must be publicly accessible;
-you cannot spy on private methods.
-This is not as severe a limitation as it may at first seem -- when you consider
-that you should only be testing the public interface; you should not
-be testing private functions anyway!
+Note that the function you are spying on must be publicly accessible; you cannot spy on private methods.
+This is not as severe a limitation as it may at first seem -- when you consider that you should only be
+testing the public interface; you should not be testing private functions anyway!
 
-In the following, the term _actual method_ shall refer to the method you are spying upon
-(that is, the method indicated in the parameters to the constructor)
--- as opposed to the spy method under discussion.
+> In the following, the term _actual method_ shall refer to the method you are spying upon
+> (that is, the method indicated in the parameters to the constructor)
+> -- as opposed to the spy method under discussion.
 
 In addition to checking that the actual method has been called
 (or not called, as the case may be), you can also:
